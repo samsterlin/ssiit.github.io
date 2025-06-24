@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SS Institute of Industrial Technology - Leading Provider of Industrial Solutions</title>
     <meta name="description" content="SSIIT specializes in ducting fabrication, industrial insulation works, plant fabrication services, and professional training programs for industrial technicians.">
-    
+
     <!-- Open Graph Tags -->
     <meta property="og:title" content="SS Institute of Industrial Technology">
     <meta property="og:description" content="Leading provider of ducting fabrication, industrial insulation works, and professional training programs">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ssiit.com">
-    
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></meta>
+
     <style>
         * {
             margin: 0;
@@ -787,22 +790,22 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🔧</div>
+                    <div class="service-icon"><i class="fas fa-thermometer-half"></i></div>
                     <h3>Hot & Cold Insulation</h3>
                     <p>Expert ducting fabrication and thermal insulation solutions for industrial equipment, pipelines, and HVAC systems to maximize energy efficiency and temperature control.</p>
-                    <a href="#insulation" class="service-link">Learn More →</a>
+                    <a href="#insulation" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🏭</div>
+                    <div class="service-icon"><i class="fas fa-industry"></i></div>
                     <h3>Plant Fabrication</h3>
                     <p>Precision ducting fabrication, custom piping systems, and industrial plant equipment manufacturing with expert craftsmanship and quality assurance.</p>
-                    <a href="#fabrication" class="service-link">Learn More →</a>
+                    <a href="#fabrication" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🎓</div>
+                    <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h3>Professional Training</h3>
                     <p>Comprehensive training programs for freshers entering the industrial sector, covering safety, technical skills, and best practices.</p>
-                    <a href="#training" class="service-link">Learn More →</a>
+                    <a href="#training" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -956,28 +959,28 @@
                 <div class="contact-info">
                     <h3>Contact Information</h3>
                     <div class="contact-item">
-                        <div class="contact-icon">📍</div>
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
                             <h4>Address</h4>
                             <p>Cheruvarakkonam, Parsssala (P.O), Thiruvananthapuram <br>Pin - 695 502, Kerala.<br>India</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">📞</div>
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
                         <div>
                             <h4>Phone</h4>
                             <p>+91-94860 03799</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                         <div>
                             <h4>Email</h4>
                             <p>info@ssiit.in<br>training@ssiit.in</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
                         <div>
                             <h4>Business Hours</h4>
                             <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: Closed</p>
@@ -986,7 +989,7 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send Us a Message</h3>
-                    <form id="contactForm">
+                    <form id="contactForm" action="send_email.php" method="POST">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name <span class="required">*</span></label>
@@ -1034,10 +1037,10 @@
                     <h3>SSIIT</h3>
                     <p>SS Institute of Industrial Technology - Your trusted partner for industrial insulation, fabrication, and professional training solutions.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="LinkedIn">💼</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -1091,20 +1094,40 @@
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
             
+            // Disable submit button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
             // Get form data
             const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Basic validation
-            if (!data.firstName || !data.lastName || !data.email) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Simulate form submission
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
+
+            // Send form data via AJAX
+            fetch('send_email.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    this.reset();
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Sorry, there was an error sending your message. Please try again later.');
+            })
+            .finally(() => {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            });
         });
 
         // Add scroll effect to navbar
