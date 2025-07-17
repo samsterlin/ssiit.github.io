@@ -30,13 +30,17 @@
             --industrial-blue-700: hsl(230, 81%, 48%);
             --industrial-blue-800: hsl(226, 71%, 40%);
             --industrial-blue-900: hsl(224, 64%, 33%);
+            --accent-gold: #FFD700;
+            --accent-grey: #f4f6fa;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #23272f;
+            background: var(--accent-grey);
             scroll-behavior: smooth;
+            font-size: 1.05rem;
         }
 
         .container {
@@ -47,12 +51,13 @@
 
         /* Navigation */
         .navbar {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
+            border-bottom: 1.5px solid #e5e7eb;
         }
 
         .nav-container {
@@ -63,15 +68,18 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 2.1rem;
+            font-weight: 800;
             color: var(--industrial-blue-800);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(33, 60, 120, 0.07);
         }
 
         .logo-subtitle {
-            font-size: 0.8rem;
-            color: #666;
+            font-size: 0.9rem;
+            color: #888;
             margin-top: -5px;
+            letter-spacing: 0.5px;
         }
 
         .nav-menu {
@@ -82,26 +90,36 @@
 
         .nav-menu a {
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: #23272f;
+            font-weight: 600;
+            transition: color 0.3s, box-shadow 0.3s;
+            padding: 6px 12px;
+            border-radius: 6px;
         }
 
         .nav-menu a:hover {
             color: var(--industrial-blue-600);
+            background: var(--industrial-blue-50);
+            box-shadow: 0 2px 8px rgba(33, 60, 120, 0.07);
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             cursor: pointer;
+            color: var(--industrial-blue-700);
+            transition: color 0.2s;
+        }
+        .mobile-menu-btn:focus {
+            outline: 2px solid var(--industrial-blue-600);
+        }
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--industrial-blue-50) 0%, #f8f9fa 100%);
+            background: linear-gradient(120deg, var(--industrial-blue-50) 0%, #f8f9fa 100%);
             padding: 120px 0 80px;
             min-height: 100vh;
             display: flex;
@@ -117,81 +135,119 @@
 
         .hero-text {
             max-width: 600px;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #333;
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #23272f;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
+            line-height: 1.15;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, var(--industrial-blue-700), var(--industrial-blue-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInDown 1.2s cubic-bezier(.77,0,.18,1) 0.1s both;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #666;
+            font-size: 1.18rem;
+            color: #555;
             margin-bottom: 2rem;
-            line-height: 1.6;
+            line-height: 1.7;
+            animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.3s both;
         }
 
         .hero-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.5s both;
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 12px 28px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
+            font-weight: 700;
+            transition: all 0.25s cubic-bezier(.77,0,.18,1);
             cursor: pointer;
             border: none;
             display: inline-block;
+            box-shadow: 0 2px 12px rgba(33, 60, 120, 0.07);
+            font-size: 1.08rem;
         }
 
         .btn-primary {
-            background: var(--industrial-blue-600);
-            color: white;
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            color: #fff;
+            border: 1.5px solid var(--industrial-blue-600);
+            box-shadow: 0 4px 16px rgba(33, 60, 120, 0.10);
+            letter-spacing: 0.5px;
+            font-size: 1.12rem;
         }
 
         .btn-primary:hover {
-            background: var(--industrial-blue-700);
-            transform: translateY(-2px);
+            background: linear-gradient(90deg, var(--industrial-blue-700), var(--industrial-blue-600));
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 12px 32px rgba(33, 60, 120, 0.13);
         }
 
         .btn-outline {
             background: transparent;
             color: var(--industrial-blue-600);
             border: 2px solid var(--industrial-blue-600);
+            box-shadow: 0 2px 8px rgba(33, 60, 120, 0.07);
         }
 
         .btn-outline:hover {
             background: var(--industrial-blue-50);
+            color: var(--industrial-blue-700);
+            border-color: var(--industrial-blue-700);
         }
 
         .hero-image {
             position: relative;
+            z-index: 1;
+        }
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(120deg, rgba(33,60,120,0.08) 0%, rgba(255,255,255,0.0) 100%);
+            border-radius: 12px;
+            z-index: 2;
         }
 
         .hero-image img {
             width: 100%;
             height: 400px;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(33,60,120,0.10);
         }
 
         /* Services Section */
         .services {
-            padding: 80px 0;
-            background: white;
+            padding: 90px 0 100px 0;
+            background: linear-gradient(120deg, var(--industrial-blue-50) 60%, #f4f6fa 100%);
+            position: relative;
         }
 
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
+            position: relative;
+        }
+        .section-header .section-accent {
+            display: inline-block;
+            width: 56px;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            margin-bottom: 18px;
+        }
         }
 
         .section-header h2 {
@@ -209,60 +265,92 @@
         }
 
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
             margin-bottom: 4rem;
         }
 
         .service-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 12px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: #fff;
+            padding: 2.5rem 2rem 2rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(33,60,120,0.10);
+            transition: transform 0.35s cubic-bezier(.77,0,.18,1), box-shadow 0.35s cubic-bezier(.77,0,.18,1);
+            border: none;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            min-width: 320px;
+            max-width: 370px;
+            flex: 1 1 320px;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 7px;
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-12px) scale(1.045);
+            box-shadow: 0 20px 48px rgba(33,60,120,0.16);
+            border-color: var(--industrial-blue-600);
         }
 
         .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--industrial-blue-100);
-            border-radius: 12px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--industrial-blue-100) 60%, #fff 100%);
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin: 0 auto 1.7rem auto;
+            font-size: 2.3rem;
             color: var(--industrial-blue-600);
+            box-shadow: 0 4px 16px rgba(33,60,120,0.09);
+            border: 2.5px solid var(--industrial-blue-50);
         }
 
         .service-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            color: #333;
+            color: var(--industrial-blue-800);
+            text-align: center;
+            letter-spacing: 0.5px;
         }
 
         .service-card p {
-            color: #666;
+            color: #555;
             margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.08rem;
         }
 
         .service-link {
             color: var(--industrial-blue-600);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            transition: color 0.2s;
+            justify-content: center;
+            font-size: 1.05rem;
         }
 
         .service-link:hover {
             color: var(--industrial-blue-700);
+            text-decoration: underline;
         }
 
         /* Detailed Services */
@@ -329,71 +417,240 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* Training Section */
-        .training {
-            padding: 80px 0;
-            background: white;
+        /* Work Showcase Section */
+        .work-showcase-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .work-showcase-header .section-accent {
+            display: inline-block;
+            width: 56px;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            margin-bottom: 18px;
         }
 
-        .training-cards {
+        .work-showcase-header h2 {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .work-showcase-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .work-showcase-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-top: 2rem;
+        }
+
+        .work-item {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(33,60,120,0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1.5px solid #e5e7eb;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .work-item:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 36px rgba(33,60,120,0.13);
+        }
+
+        .work-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .work-item:hover .work-image img {
+            transform: scale(1.08) rotate(-1deg);
+            filter: brightness(1.08) contrast(1.08);
+        }
+
+        .work-content {
+            padding: 1.5rem;
+        }
+
+        .work-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.8rem;
+        }
+
+        .work-content p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Training Section */
+        .training {
+            padding: 90px 0 100px 0;
+            background: linear-gradient(120deg, var(--industrial-blue-50) 60%, #f4f6fa 100%);
+            position: relative;
+        }
+
+        .training-section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        .training-section-header .section-accent {
+            display: inline-block;
+            width: 56px;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            margin-bottom: 18px;
+        }
+        .training-section-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .training-section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .training-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
+            margin-bottom: 4rem;
         }
 
         .training-card {
-            background: var(--industrial-blue-50);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
+            background: #fff;
+            padding: 2.5rem 2rem 2rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(33,60,120,0.10);
+            transition: transform 0.35s cubic-bezier(.77,0,.18,1), box-shadow 0.35s cubic-bezier(.77,0,.18,1);
+            border: none;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            min-width: 320px;
+            max-width: 370px;
+            flex: 1 1 320px;
+            overflow: hidden;
         }
-
+        .training-card::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 7px;
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .training-card:hover {
+            transform: translateY(-12px) scale(1.045);
+            box-shadow: 0 20px 48px rgba(33,60,120,0.16);
+            border-color: var(--industrial-blue-600);
+        }
+        .training-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--industrial-blue-100) 60%, #fff 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.7rem auto;
+            font-size: 2.3rem;
+            color: var(--industrial-blue-600);
+            box-shadow: 0 4px 16px rgba(33,60,120,0.09);
+            border: 2.5px solid var(--industrial-blue-50);
+        }
         .training-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            color: #333;
+            color: var(--industrial-blue-800);
+            text-align: center;
+            letter-spacing: 0.5px;
         }
-
         .training-card p {
-            color: #666;
+            color: #555;
             margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.08rem;
         }
-
         .training-features {
             list-style: none;
             margin-bottom: 2rem;
             text-align: left;
         }
-
         .training-features li {
             display: flex;
             align-items: center;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
             color: #555;
         }
-
         .training-features li::before {
-            content: "•";
+            content: "✓";
             color: var(--industrial-blue-600);
             font-weight: bold;
-            margin-right: 0.5rem;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
         }
-
         .training-images {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
+            position: relative;
+            margin-top: 2.5rem;
         }
-
+        .training-images::before {
+            content: '';
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 56px;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            z-index: 1;
+        }
         .training-images img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.13);
+            transition: transform 0.35s cubic-bezier(.77,0,.18,1), box-shadow 0.35s cubic-bezier(.77,0,.18,1), filter 0.35s cubic-bezier(.77,0,.18,1);
+        }
+        .training-images img:hover {
+            transform: scale(1.06) rotate(-1deg);
+            box-shadow: 0 12px 36px rgba(33,60,120,0.16);
+            filter: brightness(1.08) contrast(1.08);
         }
 
         /* About Section */
@@ -532,83 +789,100 @@
 
         .contact-form {
             background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 2.5rem 2rem 2rem 2rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(33,60,120,0.10);
+            position: relative;
+            border: 1.5px solid #e5e7eb;
+            overflow: hidden;
         }
-
-        .contact-form h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .form-group label {
+        .contact-form::before {
+            content: '';
             display: block;
-            margin-bottom: 0.5rem;
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 7px;
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+            z-index: 2;
+        }
+        .contact-form .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
             font-weight: 500;
             color: #333;
         }
-
+        .form-group {
+            position: relative;
+        }
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 12px 16px 12px 44px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #fff;
+            position: relative;
         }
-
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--industrial-blue-500);
+            border-color: var(--industrial-blue-600);
+            box-shadow: 0 0 0 2px var(--industrial-blue-100);
+        }
+        .form-group .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--industrial-blue-600);
+            font-size: 1.1rem;
+            pointer-events: none;
+            z-index: 3;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--industrial-blue-600), var(--industrial-blue-700));
+            color: #fff;
+            border: 1.5px solid var(--industrial-blue-600);
+            box-shadow: 0 4px 16px rgba(33, 60, 120, 0.10);
+            letter-spacing: 0.5px;
+            font-size: 1.12rem;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
+        .btn-primary:hover {
+            background: linear-gradient(90deg, var(--industrial-blue-700), var(--industrial-blue-600));
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 12px 32px rgba(33, 60, 120, 0.13);
         }
 
-        .required {
-            color: #e74c3c;
-        }
-
-        /* Footer */
         .footer {
-            background: #333;
-            color: white;
-            padding: 3rem 0 2rem;
+            background: linear-gradient(120deg, #23272f 0%, #2d3340 100%);
+            color: #fff;
+            padding: 3.5rem 0 2.5rem;
+            border-top: 4px solid var(--industrial-blue-600);
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .footer-section h3 {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 800;
             margin-bottom: 1rem;
+            letter-spacing: 0.5px;
         }
 
         .footer-section p {
-            color: #ccc;
+            color: #bfc4d1;
             margin-bottom: 1rem;
         }
 
@@ -618,13 +892,13 @@
         }
 
         .social-links a {
-            color: #ccc;
-            font-size: 1.2rem;
+            color: #bfc4d1;
+            font-size: 1.3rem;
             transition: color 0.3s;
         }
 
         .social-links a:hover {
-            color: white;
+            color: var(--accent-gold);
         }
 
         .footer-links {
@@ -636,20 +910,21 @@
         }
 
         .footer-links a {
-            color: #ccc;
+            color: #bfc4d1;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--accent-gold);
         }
 
         .footer-bottom {
-            border-top: 1px solid #555;
+            border-top: 1.5px solid #444a5a;
             padding-top: 2rem;
             text-align: center;
-            color: #ccc;
+            color: #bfc4d1;
+            font-size: 0.98rem;
         }
 
         /* Responsive Design */
@@ -739,24 +1014,38 @@
                 gap: 1rem;
             }
         }
-    
+
         .float{
             position:fixed;
             width:60px;
             height:60px;
             bottom:40px;
             right:40px;
-            background-color:#25d366;
+            background: linear-gradient(135deg, #25d366 60%, #128c7e 100%);
             color:#FFF;
             border-radius:50px;
             text-align:center;
-        font-size:30px;
-            box-shadow: 2px 2px 3px #999;
-        z-index:100;
+            font-size:30px;
+            box-shadow: 2px 2px 12px #25d36655;
+            z-index:100;
+            transition: box-shadow 0.2s;
         }
-
+        .float:hover {
+            box-shadow: 0 8px 32px #25d36699;
+        }
         .my-float{
             margin-top:16px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
         }
     </style>
 </head>
@@ -804,6 +1093,7 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
+                <span class="section-accent"></span>
                 <h2>Our Core Services</h2>
                 <p>Delivering excellence in industrial solutions with decades of experience and cutting-edge technology</p>
             </div>
@@ -811,7 +1101,7 @@
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-thermometer-half"></i></div>
                     <h3>Hot & Cold Insulation</h3>
-                    <p>Expert ducting fabrication and thermal insulation solutions for industrial equipment, pipelines, and HVAC systems to maximize energy efficiency and temperature control.</p>
+                    <p>Comprehensive thermal insulation solutions including hot & cold insulation, rubber sheet installations, thermocol EPS applications, insulation jackets, and painting labour supply for industrial systems.</p>
                     <a href="#insulation" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service-card">
@@ -840,8 +1130,14 @@
                         <h2>Ducting Fabrication & Insulation Works</h2>
                         <p>Specialized in ducting fabrication and comprehensive thermal insulation solutions for industrial applications. Our proven expertise ensures optimal energy efficiency, temperature control, and system performance.</p>
                         <ul class="service-features">
+                            <li>Hot insulation for high-temperature systems</li>
+                            <li>Thermal insulation for energy efficiency</li>
+                            <li>Cold insulation for refrigeration systems</li>
+                            <li>Rubber sheet and tubes installation</li>
+                            <li>Thermocol EPS sheet application</li>
+                            <li>Painting labour supply services</li>
+                            <li>Insulation jacket and mattress fabrication</li>
                             <li>Industrial ducting fabrication and installation</li>
-                            <li>Hot and cold pipeline insulation</li>
                             <li>HVAC system insulation and cladding</li>
                             <li>Equipment and vessel thermal protection</li>
                         </ul>
@@ -873,8 +1169,87 @@
                             <li>Industrial piping and process equipment</li>
                             <li>Stainless steel and carbon steel fabrication</li>
                             <li>Complete installation and testing services</li>
+                            <li>Custom Metal Fabrication</li>
+                            <li>Structural Fabrication</li>
+                            <li>Piping and Ductwork</li>
+                            <li>Equipment Manufacturing</li>
+                            <li>On-site and Off-site Fabrication</li>
                         </ul>
-                        <a href="#contact" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-primary">Get Quote</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Showcase Section -->
+            <div id="work-showcase" class="service-detail">
+                <div class="work-showcase-header">
+                    <span class="section-accent"></span>
+                    <h2>Our Specialized Work Portfolio</h2>
+                    <p>Comprehensive range of insulation and industrial services delivered with precision and expertise</p>
+                </div>
+                <div class="work-showcase-grid">
+                    <div class="work-item">
+                        <div class="work-image">
+                            <img src="images/hot-insulation-services.jpg" alt="Hot insulation work">
+                        </div>
+                        <div class="work-content">
+                            <h3>Hot Insulation</h3>
+                            <p>High-temperature insulation systems for furnaces, boilers, and industrial equipment operating at elevated temperatures.</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image">
+                            <img src="images/Thermal-Insulation-Jackets.jpg" alt="Thermal insulation installation">
+                        </div>
+                        <div class="work-content">
+                            <h3>Thermal Insulation</h3>
+                            <p>Energy-efficient thermal insulation solutions for industrial processes and building applications.</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image">
+                            <img src="images/cold-insulation-services.jpg" alt="Cold insulation systems">
+                        </div>
+                        <div class="work-content">
+                            <h3>Cold Insulation</h3>
+                            <p>Specialized insulation for refrigeration systems, cryogenic applications, and low-temperature processes.</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image">
+                            <img src="images/insulation-pipe.jpg" alt="Rubber sheet and tubes installation">
+                        </div>
+                        <div class="work-content">
+                            <h3>Rubber Sheet & Tubes</h3>
+                            <p>Installation of rubber sheets and tubes for industrial sealing, gaskets, and protective applications.</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image">
+                            <img src="images/Theromocol-Pipe-Insulation.jpg" alt="Thermocol EPS sheet application">
+                        </div>
+                        <div class="work-content">
+                            <h3>Thermocol EPS Sheet</h3>
+                            <p>Lightweight and effective expanded polystyrene insulation for thermal and acoustic applications.</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image">
+                            <img src="images/painter-working.jpg" alt="Painting labour supply">
+                        </div>
+                        <div class="work-content">
+                            <h3>Painting Labour Supply</h3>
+                            <p>Professional painting services and skilled labour supply for industrial coating and finishing work.</p>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-image">
+                            <img src="images/thermal-insulation-jackets-image.jpg" alt="Insulation jacket and mattress">
+                        </div>
+                        <div class="work-content">
+                            <h3>Insulation Jacket & Mattress</h3>
+                            <p>Custom-fabricated removable insulation jackets and mattresses for valves, flanges, and equipment.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -884,12 +1259,14 @@
     <!-- Training Section -->
     <section id="training" class="training">
         <div class="container">
-            <div class="section-header">
+            <div class="training-section-header">
+                <span class="section-accent"></span>
                 <h2>Professional Training Programs</h2>
                 <p>Empowering the next generation of industrial professionals with hands-on training and industry-relevant skills</p>
             </div>
             <div class="training-cards">
                 <div class="training-card">
+                    <div class="training-icon"><i class="fas fa-book-open"></i></div>
                     <h3>Foundational Course</h3>
                     <p>6-month comprehensive program covering industrial safety, ducting fabrication techniques, and thermal insulation fundamentals.</p>
                     <ul class="training-features">
@@ -900,6 +1277,7 @@
                     <a href="#contact" class="btn btn-primary">Apply Now</a>
                 </div>
                 <div class="training-card">
+                    <div class="training-icon"><i class="fas fa-user-graduate"></i></div>
                     <h3>Advanced Specialization</h3>
                     <p>3-month intensive program for experienced technicians specializing in advanced ducting fabrication and industrial insulation techniques.</p>
                     <ul class="training-features">
@@ -910,6 +1288,7 @@
                     <a href="#contact" class="btn btn-primary">Apply Now</a>
                 </div>
                 <div class="training-card">
+                    <div class="training-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     <h3>Corporate Training</h3>
                     <p>Customized training programs for companies looking to upskill their workforce in ducting fabrication, insulation work, and industrial plant operations.</p>
                     <ul class="training-features">
@@ -1009,40 +1388,46 @@
                 <div class="contact-form">
                     <h3>Send Us a Message</h3>
                     <form id="contactForm" action="send_email.php" method="POST">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name <span class="required">*</span></label>
-                                <input type="text" id="firstName" name="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name <span class="required">*</span></label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Interest</label>
-                            <select id="service" name="service">
-                                <option value="">Select a service</option>
-                                <option value="insulation">Hot & Cold Insulation</option>
-                                <option value="fabrication">Plant Fabrication</option>
-                                <option value="training">Training Programs</option>
-                                <option value="consultation">General Consultation</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell us about your project or training needs"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                    </form>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <span class="input-icon"><i class="fas fa-user"></i></span>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name <span class="required">*</span></label>
+            <span class="input-icon"><i class="fas fa-user"></i></span>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email <span class="required">*</span></label>
+        <span class="input-icon"><i class="fas fa-envelope"></i></span>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <span class="input-icon"><i class="fas fa-phone"></i></span>
+        <input type="tel" id="phone" name="phone">
+    </div>
+    <div class="form-group">
+        <label for="service">Service Interest</label>
+        <span class="input-icon"><i class="fas fa-briefcase"></i></span>
+        <select id="service" name="service">
+            <option value="">Select a service</option>
+            <option value="insulation">Hot & Cold Insulation</option>
+            <option value="fabrication">Plant Fabrication</option>
+            <option value="training">Training Programs</option>
+            <option value="consultation">General Consultation</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <span class="input-icon"><i class="fas fa-comment-dots"></i></span>
+        <textarea id="message" name="message" placeholder="Tell us about your project or training needs"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+</form>
                 </div>
             </div>
         </div>
@@ -1121,7 +1506,7 @@
 
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
-            
+
             // Disable submit button and show loading state
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
@@ -1177,7 +1562,7 @@
         });
 
         // Observe elements for animation
-        document.querySelectorAll('.service-card, .training-card, .stat').forEach(el => {
+        document.querySelectorAll('.service-card, .training-card, .stat, .work-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
